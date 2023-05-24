@@ -1,12 +1,8 @@
-import React from 'react';
-import styles from './app.less'
-import { Button } from 'antd';
+import React from "react";
 
 function App() {
   return (
-    <div>
-      首页
-    </div>
+    <div>123</div>
   );
 }
 
