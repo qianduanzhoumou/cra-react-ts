@@ -1,55 +1,42 @@
-import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom'
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
-import menuRouter from '@/routers/routers';
-import handRouter from '@/utils/utils';
+import { routes } from '@/routers/router';
+import getItem from '@/utils/utils';
 
 const { Sider } = Layout;
 
-type MenuItem = Required<MenuProps>['items'][number];
 
 const LayoutSider = () => {
     const navigate = useNavigate()
-    const { pathname } = useLocation()
-    const [menuList, setMenuList] = useState<MenuItem[]>([])
-    const [openKey, setOpenKey] = useState<string[]>()
-    const [selectedKeys, setSelectedKeys] = useState<string[]>([pathname]);
-    const [ceshi, setCeshi] = useState(false)
+    const { pathname } = useLocation(); //当前浏览器路径
 
-    // 点击菜单项展示对应页面
-    const getLink: MenuProps["onClick"] = ({ key }: { key: string }) => {
-        navigate(key);
+    const menuItem: MenuProps["items"] = getItem(
+        routes[0].children![0].children.filter((item) => item.path !== "*")
+    )
+
+    const renderOpenKeys = () => { //根据当前的路径生成需要展开的菜单项数组
+        const arr = pathname.split("/").slice(0, -1); //将当前浏览器页面的路径使用 / 分隔成一个字符串数组，并去掉最后一项。
+        const result = arr.map(
+            (_, index) => "/" + arr.slice(1, index + 1).join("/")
+            //将该项及其之前的所有项组合起来，然后在开头加上 / 并将组合后的字符串作为 key 值。
+        );
+        return result; //返回生成的菜单项数组。
     };
 
-    // 设置当前展开的 subMenu
-    const getOpenChange = (openKeys: string[]) => {
-        if (openKeys.length === 0 || openKeys.length === 1) return setOpenKey(openKeys);
-        const latestOpenKey = openKeys[openKeys.length - 1];
-        if (latestOpenKey.includes(openKeys[0])) return setOpenKey(openKeys);
-        setOpenKey([latestOpenKey]);
-    }
-
-    useEffect(() => {
-        setMenuList(handRouter(menuRouter))
-    }, [])
-
-    // 刷新页面保持高亮
-    useEffect(() => {
-        // 高亮丢失暂未解决
-        setSelectedKeys([pathname])
-    }, [pathname])
+    const getLink: MenuProps["onClick"] = ({ key }) => {
+        navigate(key);
+    };
 
     return (
         <Sider width={200} style={{ background: '#fdfdfd' }}>
             <Menu
                 mode="inline"
-                selectedKeys={selectedKeys}
-                openKeys={openKey}
+                defaultSelectedKeys={[pathname]}
+                defaultOpenKeys={renderOpenKeys()}
                 style={{ height: '100%', borderRight: 0 }}
-                items={menuList}
+                items={menuItem}
                 onClick={getLink}
-                onOpenChange={getOpenChange}
             />
         </Sider>
     )

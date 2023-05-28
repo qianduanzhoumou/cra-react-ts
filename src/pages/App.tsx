@@ -1,8 +1,12 @@
-import Router from '@/routers';
+import Lyout from '@/components/layout';
+import { Spin } from 'antd';
+import { Suspense, } from 'react';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router />
+    <Suspense fallback={<Spin size="large" className="globa_spin" />}>
+      <Lyout />
+    </Suspense>
   )
 }
 

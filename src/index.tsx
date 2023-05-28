@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from '@/pages/App';
-import { BrowserRouter as Router } from "react-router-dom"
+import { RouterProvider } from "react-router-dom"
+import router from '@/routers/router';
 import 'antd/dist/reset.css';
 import './index.less';
 
@@ -10,7 +9,5 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Router>
-    <App />
-  </Router>
-);
+  <RouterProvider router={router} />
+)
