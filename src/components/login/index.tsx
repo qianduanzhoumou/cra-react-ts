@@ -1,11 +1,18 @@
 import { Button } from "antd"
 import { useNavigate } from 'react-router-dom'
+// import { useState } from "react"
 
 const Login = () => {
     const navigate = useNavigate()
+    const userInfo = 'zy'
+
+    const handelClick = () => {
+        localStorage.setItem('userData', userInfo)
+        navigate('/')
+    }
 
     return <div>
-        <Button onClick={() => navigate('/home')}>跳转到首页</Button>
+        <Button onClick={handelClick}>跳转到首页</Button>
     </div>
 }
 
