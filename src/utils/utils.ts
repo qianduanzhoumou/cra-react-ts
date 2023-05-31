@@ -9,7 +9,7 @@ type RouteType = NonIndexRouteObject & {
  * @children 路由数组
  * 递归路由获取Menu菜单方法
  */
-const getItem: any = (children: RouteType[]) => {
+export const getItem: any = (children: RouteType[]) => {
   return children.map((item) => {
     return {
       key: item.index
@@ -25,5 +25,3 @@ const getItem: any = (children: RouteType[]) => {
     };
   });
 };
-
-export default getItem;

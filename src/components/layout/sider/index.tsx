@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import type { MenuProps } from 'antd';
 import { Layout, Menu } from 'antd';
 import { routes } from '@/routers/router';
-import getItem from '@/utils/utils';
+import { getItem } from '@/utils/utils';
 
 const { Sider } = Layout;
 
