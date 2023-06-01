@@ -2,8 +2,8 @@
 
 ### 介绍 📖
 
-项目日期 2023.5.21
-技术栈:React18、Redux && Redux-Toolkit、Ant-Design、TypeScript
+- 项目日期 2023.5.21
+- 技术栈:React18、Redux && Redux-Toolkit、Ant-Design、TypeScript
 
 ### 一、在线预览地址 👀
 
@@ -50,12 +50,14 @@ yarn build
 yarn deploy 线上部署
 ```
 
+### 五、项目过程笔记 📑
+
 ```text
 如需让 cra 支持 less 并且使用 CSS Modules 的形式 需要安装 less less-module craco-css-modules craco-less
 并且在根目录文件下创建 craco.config.js 同时在 src 目录下申明全局 ts 定义类型文件，用于忽略.module
 ```
 
-### 五、文件资源目录 📚
+### 六、文件资源目录 📚
 
 ```text
 Craco-React-Ts
@@ -74,7 +76,6 @@ Craco-React-Ts
 ├─ .prettierrc.json       # prettier 格式化配置
 ├─ craco.config.js        # 自定义 webpack 全局配置
 ├─ deploy.sh              # 线上部署 surge 脚本
-├─ package-lock.json      # 依赖包包版本锁
 ├─ package.json           # 依赖包管理
 ├─ README.md              # README 介绍
 ├─ tsconfig.json          # typescript 全局配置
