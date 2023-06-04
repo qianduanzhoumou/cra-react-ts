@@ -6,15 +6,6 @@ const LayoutBreadcrumb = () => {
             {
                 title: 'Home',
             },
-            {
-                title: <a href="">Application Center</a>,
-            },
-            {
-                title: <a href="">Application List</a>,
-            },
-            {
-                title: 'An Application',
-            },
         ]} />
     )
 }

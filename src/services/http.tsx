@@ -4,7 +4,8 @@ axios.defaults.withCredentials = true;
 
 const services = axios.create({
     baseURL: 'http://localhost:8080',
-    timeout: 10000
+    timeout: 10000,
+    headers: {}
 });
 
 services.interceptors.request.use(

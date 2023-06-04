@@ -29,7 +29,7 @@ const LayoutSider = () => {
     };
 
     return (
-        <Sider width={200} style={{ background: '#fdfdfd' }}>
+        <Sider breakpoint="lg" collapsible width={200} style={{ background: '#fdfdfd' }}>
             <Menu
                 mode="inline"
                 defaultSelectedKeys={[pathname]}

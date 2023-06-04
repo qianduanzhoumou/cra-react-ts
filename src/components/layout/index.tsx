@@ -1,16 +1,24 @@
-import { Navigate } from 'react-router-dom';
+// import { selectLogin } from '@/store/loginsReducer';
+// import { useSelector } from 'react-redux';
+// import { Navigate, useNavigate } from 'react-router-dom';
 import { Layout } from 'antd';
 import LayoutHeader from './header';
 import LayoutSider from './sider';
 import LayoutContent from './content';
 import LayoutBreadcrumb from './breadcrumb';
 import styles from './index.less'
+// import { useEffect } from 'react';
 
 const Lyout: any = () => {
+    // const navigate = useNavigate()
 
-    if (!localStorage.getItem('userData')) {
-        return <Navigate to={'/login'} />
-    }
+    // const loginType = useSelector(selectLogin)
+
+    // useEffect(() => {
+    //     loginType ? navigate('/') : navigate('/login')
+    //     console.log('eee', loginType);
+    // }, [loginType])
+
 
     return (
         <Layout className={styles.layout}>

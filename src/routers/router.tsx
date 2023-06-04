@@ -1,10 +1,10 @@
-import App from "@/pages/App";
+import App from "@/App";
 import Login from "@/components/login";
 import ErrorPage from "@/pages/error-page";
 import Home from "@/pages/home";
 import Todo from "@/pages/todo";
 
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 const routes = [
     {
@@ -26,7 +26,7 @@ const routes = [
                     },
                     {
                         path: "*",
-                        element: <Navigate to="/" replace={true} />,
+                        element: <ErrorPage />,
                     },
                 ],
             },

@@ -1,21 +1,21 @@
-import { Button } from "antd"
-import { useNavigate } from 'react-router-dom'
-import { useTranslation } from "react-i18next";
+// import { Navigate, } from 'react-router-dom'
+import styles from './index.less'
+import LoginForm from './login-form';
 
 const Login = () => {
-    const { t } = useTranslation()
-    const navigate = useNavigate()
+    // if (localStorage.getItem('token')) {
+    //     return <Navigate to={'/'} replace={true} />
+    // }
 
-    const userInfo = 'zy'
-
-    const handelClick = () => {
-        localStorage.setItem('userData', userInfo)
-        navigate('/')
-    }
+    
 
     return (
-        <div>
-            <Button onClick={handelClick}>{t('首页')}</Button>
+        <div className={styles.login}>
+            <div className={styles.content}>
+                <div className={styles['login-img']}>
+                </div>
+                <LoginForm />
+            </div>
         </div>
     )
 }
