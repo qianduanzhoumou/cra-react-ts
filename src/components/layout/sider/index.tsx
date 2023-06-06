@@ -1,42 +1,55 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import type { MenuProps } from 'antd';
-import { Layout, Menu } from 'antd';
-import { routes } from '@/routers/router';
-import { getItem } from '@/utils/utils';
+import { Layout, Menu, MenuProps } from 'antd';
+import { asyncRoutes } from '@/routers/routers';
+import { useMemo } from 'react';
 
 const { Sider } = Layout;
 
+type MenuItem = Required<MenuProps>['items'][number];
+
+function getItem(
+    label: React.ReactNode,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: any[],
+    type?: 'group',
+): MenuItem {
+    return {
+        key,
+        icon,
+        children,
+        label,
+        type,
+    } as MenuItem;
+}
 
 const LayoutSider = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation(); //当前浏览器路径
 
-    const menuItem: MenuProps["items"] = getItem(
-        routes[0].children![0].children.filter((item) => item.path !== "*")
-    )
+    // // 生成Menu所需要的数组对象
+    // const handleItem = (accessRoutes: any) => {
+    //     const result: any = []
+    //     accessRoutes.forEach((route: any) => {
+    //         console.log('eee', route);
+    //         // if (!route.children) {
 
-    const renderOpenKeys = () => { //根据当前的路径生成需要展开的菜单项数组
-        const arr = pathname.split("/").slice(0, -1); //将当前浏览器页面的路径使用 / 分隔成一个字符串数组，并去掉最后一项。
-        const result = arr.map(
-            (_, index) => "/" + arr.slice(1, index + 1).join("/")
-            //将该项及其之前的所有项组合起来，然后在开头加上 / 并将组合后的字符串作为 key 值。
-        );
-        return result; //返回生成的菜单项数组。
-    };
+    //         // }
+    //     });
+    //     return result
+    // }
 
-    const getLink: MenuProps["onClick"] = ({ key }) => {
-        navigate(key);
-    };
+    // console.log('eee', asyncRoutes);
 
     return (
         <Sider breakpoint="lg" collapsible width={200} style={{ background: '#fdfdfd' }}>
             <Menu
                 mode="inline"
-                defaultSelectedKeys={[pathname]}
-                defaultOpenKeys={renderOpenKeys()}
+                // defaultSelectedKeys={[pathname]}
+                // defaultOpenKeys={renderOpenKeys()}
                 style={{ height: '100%', borderRight: 0 }}
-                items={menuItem}
-                onClick={getLink}
+                items={[]}
+                onClick={() => { }}
             />
         </Sider>
     )
